@@ -16,6 +16,16 @@ func SelfDir() string {
 	return filepath.Dir(SelfPath())
 }
 
+// SelfName gets compiled executable name
+func SelfName() string {
+	return filepath.Base(SelfPath())
+}
+
+// SelfExt  gets compiled executable suffix
+func SelfExt() string {
+	return filepath.Ext(SelfPath())
+}
+
 // FileExists reports whether the named file or directory exists.
 func FileExists(name string) bool {
 	if _, err := os.Stat(name); err != nil {
