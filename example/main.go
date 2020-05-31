@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	fmt.Println(sys.SelfDir(), sys.SelfPath(), sys.SelfName())
+	fmt.Println(sys.SelfDir(), sys.SelfPath(), sys.SelfName(), sys.SelfExt())
 }
