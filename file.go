@@ -3,6 +3,7 @@ package sys
 import (
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 // SelfPath gets compiled executable file absolute path
@@ -21,6 +22,11 @@ func SelfName() string {
 	return filepath.Base(SelfPath())
 }
 
+// SelfNameWithoutExt gets compiled executable name with ext.
+func SelfNameWithoutExt() string {
+	return strings.TrimSuffix(SelfName(), SelfExt())
+}
+
 // SelfExt  gets compiled executable suffix
 func SelfExt() string {
 	return filepath.Ext(SelfPath())
@@ -34,4 +40,16 @@ func FileExists(name string) bool {
 		}
 	}
 	return true
+}
+
+func FileSize(name string) int64 {
+	fileInfo, err := os.Stat(name)
+	if err != nil {
+		return -1
+	}
+	if os.IsNotExist(err) {
+		return -1
+	}
+
+	return fileInfo.Size()
 }
