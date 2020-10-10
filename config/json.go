@@ -6,7 +6,13 @@ type jsonConfig struct {
 	data     interface{}
 }
 
-func NewJSONConfig(filePath string, isCrypt b)
+func NewJSONConfig(filePath string, isCrypt bool, data interface{}) *jsonConfig {
+	return &jsonConfig{
+		filePath: filePath,
+		isCrypt:  isCrypt,
+		data:     data,
+	}
+}
 
 func (jc *jsonConfig) Load() error {
 	return nil
