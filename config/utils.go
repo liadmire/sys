@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path"
+
+	"github.com/liadmire/sys"
 )
 
 func ConfigLoad(fileName string, v interface{}) error {
-	filePath := path.Join(SelfDir(), fileName)
-	if !FileExists(filePath) {
+	filePath := path.Join(sys.SelfDir(), fileName)
+	if !sys.FileExists(filePath) {
 		return fmt.Errorf("%s config file not exists.", fileName)
 	}
 
@@ -32,7 +34,7 @@ func ConfigSave(fileName string, v interface{}) error {
 		return err
 	}
 
-	filePath := path.Join(SelfDir(), fileName)
+	filePath := path.Join(sys.SelfDir(), fileName)
 	err = ioutil.WriteFile(filePath, data, 0666)
 	if err != nil {
 		return err

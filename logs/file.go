@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"liadmire/sys"
+	"github.com/liadmire/sys"
 )
 
 type Logger struct {
